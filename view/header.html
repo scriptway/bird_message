@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>留言板2---纯手撸</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+    <style>
+        #contact-area {
+            padding: 110px 0 120px;
+        }
+
+        .contact-box {
+            -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 50px 50px 35px;
+            background-color: #fff;
+            border-radius: 6px;
+        }
+
+        .contact-box input {
+            height: 50px;
+            border: 1px solid #f7f6f5;
+            font-size: 15px;
+            background-color: #f7f6f5;
+            font-weight: 500
+        }
+
+        .contact-box textarea {
+            border: 1px solid #f7f6f5;
+            padding-top: 10px;
+            background-color: #f7f6f5;
+            font-size: 15px;
+            font-weight: 500
+        }
+
+        .contact-box button {
+            background-color: #325eff;
+            border: 0;
+            color: #fff;
+            padding: 10px 30px;
+            border-radius: 4px;
+            cursor: pointer;
+            outline: 0;
+            font-weight: 500;
+            font-size: 15px
+        }
+
+        .contact-box button:hover {
+            background-color: #0f39cf;
+        }
+    </style>
+</head>
+<body>
+
+<!--导航栏开始-->
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="home.php">麻雀留言板</a>
+        </div>
+        <div>
+<!--            导航栏表单开始-->
+            <form class="navbar-form navbar-left" role="search" action="list.php" method="post">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search message" name="message">
+                </div>
+                <button type="submit" class="btn btn-default">搜索</button>
+            </form>
+<!--            导航栏表单结束-->
+            <button type="button" class="btn btn-default navbar-btn" onclick="location.href='list.php'">查看我的留言</button>
+            <button type="button" class="btn btn-default navbar-btn" onclick="location.href='list.php?action=all'">查看所有留言</button>
+            <?php
+            if (@$_SESSION['user']){
+            echo <<<html
+                <ul class="nav navbar-nav navbar-right">
+                     <li><a href="list.php"><span class="glyphicon glyphicon-user"></span>{$_SESSION['user']['username']}</a></li>
+                     <li><a href="login.php?action=logout"><span class="glyphicon glyphicon-log-in"></span> 登出</a></li>
+                </ul>
+            html;
+            }else{
+            echo <<<html
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="register.php"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
+                    <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
+                </ul>
+            html;}
+            ?>
+        </div>
+    </div>
+</nav>
+<!--导航栏结束-->
+
+
+
+</body>
+</html>

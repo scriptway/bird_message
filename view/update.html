@@ -1,0 +1,21 @@
+
+<section id="contact-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1" style="width: 100%">
+                <div class="contact-box text-center">
+                    <form id="ajax-contact" action="update.php" method="post">
+                        <input type="hidden" name="mid" value="<?php echo $message['mid']; ?>">
+                        <div class="form-group"><input type="text" class="form-control" id="subject" name="title"
+                                                       placeholder="<?php echo $message['title']; ?>" value="<?php echo $message['title']; ?>"></div>
+                        <div class="form-group"><textarea class="form-control" id="message" name="message" rows="10"
+                                                          placeholder="<?php echo $message['message']; ?>" required=""><?php echo $message['message']; ?></textarea></div>
+                        <button type="submit">提 交</button>
+                        <div id="form-messages"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

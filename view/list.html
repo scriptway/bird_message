@@ -1,0 +1,18 @@
+<div style="margin-top: 100px">
+    <table class="table table-hover">
+        <tr>
+            <th>发表用户</th> <th>标题</th> <th>内容</th> <th>修改时间</th><th>修改</th><th>删除</th>
+            <!--3、循环显示数据-->
+            <?php foreach($messages as $rows):?>
+        <tr>
+            <td><?php echo $rows['username']?></td>
+            <td><?php echo $rows['title']?></td>
+            <td><?php echo $rows['message']?></td>
+            <td><?php echo date('Y-m-d H:i:s',$rows['write_time'])?></td>
+            <td><button type="button" class="btn btn-warning" onclick="location.href='update.php?a=update&id=<?php echo $rows['mid']?>'">修改</button></td>
+        <td><button type="button" class="btn btn-danger" onclick="if(confirm('确定要删除吗'))location.href='update.php?a=del&id=<?php echo $rows['mid']?>'">删除</button></td>
+        </tr>
+        <?php endforeach;?>
+        </tr>
+    </table>
+</div>
